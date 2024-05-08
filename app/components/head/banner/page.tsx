@@ -13,6 +13,8 @@ const Banner = () => {
   ml-80
   mr-80
   border
+  display: flex
+  justify-content: center
 
   ">Film Friends</div>;
 };
