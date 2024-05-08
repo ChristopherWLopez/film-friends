@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.Testing{
+  color: aquamarine;
+}
+
+.Banner{
+  color: cadetblue;
+  font: bold;
+  font-style: normal;
+}
