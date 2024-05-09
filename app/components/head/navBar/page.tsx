@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const NavBar = () => {
   return (
-    <div className='NavBar'>
-      <ul>
+    <div>
+      <ul
+        className="NavBar
+          text-amber-700"
+      >
         <li>Movies</li>
         <li>Favorites</li>
         <li>Search</li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
