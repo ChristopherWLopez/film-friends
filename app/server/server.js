@@ -2,6 +2,6 @@ const express = require('express');
 
 const server = express();
 
-server.get('/', (req, res)=>{
+server.get('/home', (req, res)=>{
     res.send("You Are Home")
 })
