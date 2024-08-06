@@ -1,24 +1,26 @@
 
+
 export default async function handler(req, res){
 
-    if(req.method === 'GET'){
-        const apiKey = process.env.MOVIE_DB_API_KEY;
-        const apiUrl = `http://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+    const API_KEY = process.env.TMD_API_KEY;
 
-        try{
-            const response = await fetch(apiUrl);
-            if(!response.ok){
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            res.status(200).json(data);
-        }catch(error){
-            console.error('Failed to fetch', error);
-            res.status(500).json({ error: 'Failed to fetch '})
+    if(!API_KEY){
+        return res.status(500).json({ error: "API key not found"});
+    }
+
+    try{
+
+        const response = await fetch(`http://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`);
+
+        if(!response.ok){
+            throw new Error(`failed to fetch movies: ${response.statusText}`);
         }
-    }else{
-        res.setHeader('ALLOW, ['GET']);
-        res.status(405).end(`MTHOED${req.method}`)
+
+        const data = await response.json();
+        response.status(200).json(data);
+
+    }catch(error){
+        console.error('Error fetching data', error);
     }
 
 }
