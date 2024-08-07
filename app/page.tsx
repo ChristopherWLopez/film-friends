@@ -6,7 +6,7 @@ import Movies from "./pages/api/movies";
 export default function Home() {
   return (
     <>
-      <Movies/>
+      <Movies />
       <Banner/>
       <NavBar/>
       

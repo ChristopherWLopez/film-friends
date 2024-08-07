@@ -14,7 +14,7 @@ export default function Movies(){
 
                 const response = await fetch('/api/movies');
                 if(!response.ok){
-                    throw new Error('Fauled to fetch');
+                    throw new Error('Failed to fetch');
                 }
                 const data = await response.json();
                 console.log(data);
