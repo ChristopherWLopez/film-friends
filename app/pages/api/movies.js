@@ -28,13 +28,14 @@
 // }
 
 export default async function handler (req, res){
+
     console.log("Fetching movies");
 
     if(req.method === 'GET'){
 
         const API_KEY = process.env.TMB_API_KEY;
         const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
-    } 
+    
     try{
 
         const response = await fetch(apiUrl);
@@ -45,9 +46,16 @@ export default async function handler (req, res){
         res.status(200).json(data);
 
     }catch(error){
-        console.error(error);
-    }
+        console.error('Error Fetching datz', error);
+        res.status(500).json({ error: "Failed to fetch " + error.message });
+
+    } 
+    
     }else{
-        res.setHeader('Allow', ['GET']);
-        res.status(405).end
+        console.log('Not Going to happen');
+        // res.setHeader('Allow', ['GET']);
+        // res.status(405).end(`Method ${req.method} Not Allowed`);
     }
+
+}
+

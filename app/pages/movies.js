@@ -31,11 +31,11 @@ return(
     <>
         <h1>Popular Movies</h1>
         <ul>
+            console.log(movies);
             {movies.map(movie=>(
                 <li key={movie.id}>{movie.title}</li>
                 
             ))}
-            console.log(movies);
         </ul>
 
         
