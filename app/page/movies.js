@@ -6,6 +6,7 @@ export default function Movies(){
 
 
     const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(()=> {
         const fetchMovies = async ()=>{
@@ -21,11 +22,15 @@ export default function Movies(){
                 setMovies(data.results);
             }catch(error){
                 console.error("Error fetching data:", error);
+                setError(error)
             }
         };
         fetchMovies();
     }, []);
 
+    if(error){
+        return <div>err.message</div>
+    }
 
 return(
     <>
