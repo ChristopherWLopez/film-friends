@@ -18,15 +18,15 @@ export default function Movies() {
                 const data = await response.json();
                 setMovies(data.results);
             } catch (error) {
-                console.error("Error fetching data:", error);
                 setError(error);
+                console.error("Error fetching data:", error);
             }
         };
         fetchMovies();
     }, []);
 
     if (error) {
-        return <div>{error.message}</div>;
+        return <div>{error}</div>;
     }
 
     return (

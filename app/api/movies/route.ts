@@ -1,4 +1,7 @@
-export async function Handler(req,res){
+import { NextApiRequest, NextApiResponse } from  'next';
+import { NextResponse } from 'next/server';
+
+export default async function GET(){
 
     const API_KEY = process.env.TMDB_API_KEY;
     const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
@@ -10,9 +13,9 @@ export async function Handler(req,res){
         }
 
         const data = await response.json();
-        return new Response(JSON.stringify(data), { status: 200 });
-    }catch(e){
-        console.error('this is the error', e);
-        return new Response(JSON.stringify({ error: "Failed to fetch movies" + error.mesage }), {status: 500 });
+        return NextResponse.json(data);
+    }catch(error){
+        console.error('this is the error', error);
+       return NextResponse.json({ error: "Failed to fetch" + error});
     }
 }
